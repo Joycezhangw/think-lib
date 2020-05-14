@@ -3,8 +3,14 @@
     "type": "library",
     "description": "一个php工具包，基于thinkphp6",
     "version" : "1.0.0",
+    "keywords": [
+        "thinkphp",
+        "miniprogram",
+        "poster"
+    ],
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=7.0",
+        "jonnyw/php-phantomjs": "4.*"
     },
     "require-dev": {
         "php": ">=7.0"
@@ -21,5 +27,6 @@
             "JoyceZ\\ThinkLib\\": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
