@@ -2,6 +2,7 @@
     "name": "joycezhang/thinklib",
     "type": "library",
     "description": "一个php工具包，基于thinkphp6",
+    "version" : "1.0.0",
     "keywords": [
         "thinkphp",
         "tp6",
