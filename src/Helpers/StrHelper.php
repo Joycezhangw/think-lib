@@ -240,6 +240,27 @@ class StrHelper
         return str_replace($search, $replace, $subject, $count);
     }
 
+    /**
+     * 指定替换最后出现的字符串
+     *
+     * 例如:<a href="/manage/system/modulelist.html">系统</a><span lay-separator="">&gt;</span><a href="/manage/system/modulelist.html">模块列表</a><span lay-separator="">&gt;</span><a href="/manage/system/editmodule.html">修改模块</a><span lay-separator="">&gt;</span>
+     *
+     * StrHelper::lreplace('<span lay-separator="">&gt;</span>','',$str)
+     *
+     * @param $search
+     * @param $replace
+     * @param $subject
+     * @return string
+     */
+    public static function lreplace($search, $replace, $subject): string
+    {
+        $pos = strrpos($subject, $search);
+        if ($pos !== false) {
+            $subject = substr_replace($subject, $replace, $pos, strlen($search));
+        }
+        return trim($subject);
+    }
+
 
     /**
      * 将一个字符串部分字符用*替代隐藏
