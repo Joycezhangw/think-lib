@@ -21,7 +21,7 @@ namespace JoyceZ\ThinkLib\Helpers;
 class ResultHelper
 {
     const CODE_SUCCESS = 200;//正确执行后的返回码
-    const CODE_WARNING = -1;//逻辑警告，自定义 message 说明，请结合 Enums\ResultCodeEnum 后端结合使用
+    const CODE_WARNING = -1;//逻辑警告，自定义 message 说明，请结合 Enum\ResultCodeEnum 后端结合使用
 
     /**
      * 逻辑层 返回 array 数据格式，在api中，要使用 tp6 中的 json() 函数转 json ，laravel 中api自动转json

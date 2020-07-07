@@ -11,12 +11,12 @@
 
 declare (strict_types=1);
 
-namespace JoyceZ\ThinkLib\Enums;
+namespace JoyceZ\ThinkLib\Enum;
 
 /**
  * 枚举 基础类
  * Class BaseEnum
- * @package JoyceZ\ThinkLib\Enums
+ * @package JoyceZ\ThinkLib\Enum
  */
 abstract class BaseEnum
 {
