@@ -86,7 +86,7 @@ abstract class BaseRepository implements BaseInterface
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
      */
-    public function all(array $condition = ['1' => 1], $columns = ['*'], string $orderBy = '', string $sortBy = 'asc')
+    public function all(array $condition = [], $columns = ['*'], string $orderBy = '', string $sortBy = 'asc')
     {
         $orderBy = $orderBy ?? $this->model->getPk();
         return $this->model->where($condition)->order($orderBy, $sortBy)->field($columns)->select();
