@@ -235,7 +235,7 @@ class DateHelper
         $agoTime = $todayLast - $curTime;
         $agoDay = intval(floor($agoTime / 86400));
         if ($agoDay === 0) {
-            return date('H:i', $curTime);
+            return '今天' . date('H:i', $curTime);
         } elseif ($agoDay === 1) {
             return '昨天 ' . date('H:i', $curTime);
         } elseif ($agoDay === 2) {
