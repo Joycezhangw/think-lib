@@ -219,11 +219,12 @@ class StrHelper
 
     /**
      * 生成订单号
+     * @param string $prefix  前缀
      * @return string
      */
-    public static function orderNo()
+    public static function orderNo(string $prefix = '')
     {
-        return date('YmdHis') . substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
+        return $prefix . date('YmdHis') . substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
     }
 
     /**
