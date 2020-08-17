@@ -170,6 +170,7 @@ class DateHelper
     }
 
     /**
+     * 根据日期获取是星期几
      * @param int $time
      * @param string $format
      * @return mixed
@@ -181,8 +182,46 @@ class DateHelper
         foreach ($weekName as &$item) {
             $item = $format . $item;
         }
-
         return $weekName[$week];
+    }
+
+    /**
+     * 获取指定开始日期到结束日期
+     * @param int $start_day 开始天数，以当天开始：0，每增加一天，在当天基础上 +1
+     * @param int $end_day
+     * @return array
+     */
+    public static function getFutureHowManyDays(int $start_day = 0, int $end_day = 7)
+    {
+        $dateArr = [];
+        for ($i = $start_day; $i < $end_day; $i++) {
+            $dateArr[$i] = date('Y-m-d', strtotime(date('Y-m-d') . '+' . $i . 'day'));
+        }
+        return $dateArr;
+    }
+
+    /**
+     * 根据开始/结束时间，并以分钟为分界点生成 时间范围
+     * @param string $start_time
+     * @param string $end_time
+     * @param int $minute
+     * @return array
+     */
+    public static function buildEveryDayTimeRange(string $start_time = '09:00', string $end_time = '22:30', int $minute = 30)
+    {
+        $arr = [];
+        for ($i = strtotime($start_time); $i <= strtotime($end_time); $i = $i + 60 * $minute) {
+            $arr[] = date("H:i", $i);
+        }
+        $result = [];
+        $num = count($arr);
+        foreach ($arr as $key => $val) {
+            if ($key < $num) {
+                $time_str = strtotime($val);
+                $result[$key + 1] = $val . '-' . date('H:i', $time_str + 60 * $minute);
+            }
+        }
+        return $result;
     }
 
     /**
@@ -280,5 +319,4 @@ class DateHelper
         }
         return $result;
     }
-
 }
