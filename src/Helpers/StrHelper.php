@@ -228,6 +228,27 @@ class StrHelper
     }
 
     /**
+     * 生成24位唯一订单号码，格式：YYYY-MMDD-HHII-SS-NNNN,NNNN-CC
+     *
+     * 处理微妙级单号不重复
+     *
+     * 其中：YYYY=年份，MM=月份，DD=日期，HH=24格式小时，II=分，SS=秒，NNNNNNNN=随机数，CC=检测码
+     */
+    public static function buildOrderNo()
+    {
+        //订单号码主体（YYYYMMDDHHIISSNNNNNNNN）
+        $order_id_main = date('YmdHis') . rand(10000000, 99999999);
+        //订单号码主体长度
+        $order_id_len = strlen($order_id_main);
+        $order_id_sum = 0;
+        for ($i = 0; $i < $order_id_len; $i++) {
+            $order_id_sum += (int)(substr($order_id_main, $i, 1));
+        }
+        //唯一订单号码（YYYYMMDDHHIISSNNNNNNNNCC）
+        return $order_id_main . str_pad((string)((100 - $order_id_sum % 100) % 100), 2, '0', STR_PAD_LEFT);
+    }
+
+    /**
      * 字符串匹配替换
      *
      * @param string $search 查找的字符串
