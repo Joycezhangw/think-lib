@@ -166,4 +166,28 @@ abstract class BaseRepository implements BaseInterface
         $pkField = $pkId == '' ? $this->model->getPk() : $pkId;
         return $this->model->where($condition)->count($pkField);
     }
+
+    /**
+     * 解析一条业务数据
+     * @param array $row
+     * @return array
+     */
+    public function parseDataRow(array $row): array
+    {
+        return $row;
+    }
+
+    /**
+     * 解析多条业务数据格式，循环调用 parseDataRow 方法，只需要在具体的业务逻辑继承重写 parseDataRow 方法即可
+     * @param array $rows
+     * @return array
+     */
+    public function parseDataRows(array $rows): array
+    {
+        $list = [];
+        foreach ($rows as $row) {
+            $list[] = $this->parseDataRow($row);
+        }
+        return $list;
+    }
 }
