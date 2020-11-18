@@ -9,8 +9,6 @@
 // | Author: joyecZhang <787027175@qq.com>
 // +----------------------------------------------------------------------
 
-declare (strict_types=1);
-
 namespace JoyceZ\ThinkLib\Helpers;
 
 /**
@@ -27,10 +25,10 @@ class ResultHelper
      * 逻辑层 返回 array 数据格式，在api中，要使用 tp6 中的 json() 函数转 json ，laravel 中api自动转json
      * @param string $msg 提示信息
      * @param int $code 状态码 200:一切都ok，-1：逻辑返回错误信息，其他状态码可再定制
-     * @param array $data 数据库
-     * @return mixed
+     * @param array $data 返回数据
+     * @return array
      */
-    public static function returnFormat(string $msg = 'success', $code = 200, array $data = []): array
+    public static function returnFormat(string $msg = 'success', $code = self::CODE_SUCCESS, $data = []): array
     {
         list($ret['code'], $ret['message']) = [$code, trim($msg)];
         $ret['data'] = $data;
