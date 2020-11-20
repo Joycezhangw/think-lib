@@ -32,9 +32,9 @@ abstract class BaseEnum
      * @param $key
      * @return string
      */
-    public static function getValue($key): string
+    public static function getValue($key)
     {
-        return static::getMap()[$key] ?? '';
+        return static::getMap()[$key] ?? null;
     }
 
     /**
